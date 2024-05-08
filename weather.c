@@ -18,7 +18,7 @@ int main(){
 		close(socketfd);
 	char *c = strstr(txt,"\r\n\r\n"), *value;
 	int i;
-	char* list[] = {"time", "temperature_2m", "precipitation", "cloud_cover", "wind_speed_10m", ""};
+	char* list[][15] = {"time", "temperature_2m", "precipitation", "cloud_cover", "wind_speed_10m", ""};
 	char* dims[5]; dims[0] = list[5];
 	
 	for(i=1; i<5; ++i) {
@@ -29,6 +29,7 @@ int main(){
 	for(i=0; i<5; ++i) {
 		c = strstr(c, list[i]); c = strchr(c, i > 0 ? ':' : 'T');
 		value = ++c; c = strchr(c, "\",,,}"[i]); *c = '\0'; c++;
+		if(i % 3 == 1) *strchr(list[i], '_') = '\0';
 		printf("%14s : %s%s\n", list[i], value, dims[i]);
 	}
 	printf("\n");
