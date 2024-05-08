@@ -4,8 +4,8 @@ You have to set values of LATITUDE and LONGITUDE (line 7 and 8), that  correspon
 
 ```
           time : 20:00  
-temperature_2m : 18.6°C  
+   temperature : 18.6°C  
  precipitation : 0.00mm  
    cloud_cover : 74%  
-wind_speed_10m : 4.3km/h
+    wind_speed : 4.3km/h
 ```
