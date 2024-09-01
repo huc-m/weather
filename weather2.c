@@ -17,15 +17,15 @@ int main(){
 
 	char *list[] = {"time", "temperature_2m", "precipitation", "cloud_cover", "wind_speed_10m", ""};
 	char *dims[5]; dims[0] = list[5];
-	int i; int32_t tl; char *c = txt + 170, *value, t;
+	int i; char *value; register char *c = txt + 170;
 
 	for(i = 1; i < 5; ++i) {
-		for(c += 1, tl = *((int32_t*) list[i]); tl != *((int32_t*) c); ++c);
+		{register int32_t tl = *((int32_t*) list[i]); for(c += 1; tl != *((int32_t*) c); ++c);}
 		for(dims[i] = c += "\x00\x11\x10\x0e\x11"[i]; *c != '"'; ++c); *c = '\0';
 	}
 	for(i = 0; i < 5; ++i) {
-		for(c += 1, tl = *((int32_t*) list[i]); tl != *((int32_t*) c); ++c);
-		for(value = c += "\x12\x10\x0f\x0d\x10"[i], t = "\",,,}"[i]; *c != t; ++c); *c = '\0';
+		{register int32_t tl = *((int32_t*) list[i]); for(c += 1; tl != *((int32_t*) c); ++c);}
+		{register char t = "\",,,}"[i]; for(value = c += "\x12\x10\x0f\x0d\x10"[i]; *c != t; ++c); *c = '\0';}
 		printf("\n%14.*s : %s%s", "\x04\x0b\x0d\x0b\x0a"[i], list[i], value, dims[i]);
 	}
 	printf("\n\n");
