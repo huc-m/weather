@@ -15,7 +15,7 @@ int main(){
 		read(socketfd, txt, 998);
 		close(socketfd);
 
-	char *list[] = {"time", "temperature_2m", "precipitation", "cloud_cover", "wind_speed_10m", ""};
+	char *list[] = {"time", "temperature", "precipitation", "cloud_cover", "wind_speed", ""};
 	char *dims[5]; dims[0] = list[5];
 	int i; char *value; register char *c = txt + 170;
 
@@ -26,7 +26,7 @@ int main(){
 	for(i = 0; i < 5; ++i) {
 		{register int32_t tl = *((int32_t*) list[i]); for(c += 1; tl != *((int32_t*) c); ++c);}
 		{register char t = "\",,,}"[i]; for(value = c += "\x12\x10\x0f\x0d\x10"[i]; *c != t; ++c); *c = '\0';}
-		printf("\n%14.*s : %s%s", "\x04\x0b\x0d\x0b\x0a"[i], list[i], value, dims[i]);
+		printf("\n%14s : %s%s", list[i], value, dims[i]);
 	}
 	printf("\n\n");
 	return 0;
