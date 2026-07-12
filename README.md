@@ -1,6 +1,6 @@
 # weather
 Simple program to show current weather in terminal. Uses Open-Meteo API on https://open-meteo.com that is free for non-commercial use.
-You have to set values of LATITUDE and LONGITUDE (line 7 and 8), that  correspond to your location. The output is like as:
+You have to set values of LATITUDE and LONGITUDE (line 7 and 8), that  correspond to your location (the IP address in the **sockaddr_in** structure  may also need updating). The output is like as:
 
 ```
           time : 20:00  
