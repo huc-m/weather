@@ -8,7 +8,7 @@
 #define LONGITUDE ""
 
 int main(){
-	const char get[]="GET /v1/forecast?latitude=" LATITUDE "&longitude=" LONGITUDE  "&current=temperature_2m,precipitation,cloud_cover,wind_speed_10m&timezone=auto&forecast_days=1 HTTP/1.1\r\nHost: api.open-meteo.com \r\n\r\n";
+	const char get[]="GET /v1/forecast?latitude=" LATITUDE "&longitude=" LONGITUDE  "&current=temperature_2m,precipitation,cloud_cover,wind_speed_10m&timezone=auto&forecast_days=1 HTTP/1.1\r\nHost: api.open-meteo.com\r\n\r\n";
 	const struct sockaddr_in server_address = {AF_INET, 20480, 3798149308};
 	char txt[1000]; txt[999] = '\0';
 	int socketfd = socket(AF_INET, SOCK_STREAM, 0);
